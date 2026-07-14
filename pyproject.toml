@@ -1,0 +1,10 @@
+[project]
+name = "tarea"
+version = "0.1.0"
+
+dependencies = [
+    "typer>=0.16"
+]
+
+[project.scripts]
+tarea = "tarea.main:app"
