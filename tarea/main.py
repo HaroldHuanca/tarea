@@ -70,15 +70,18 @@ def list():
     )
 
     # 3. Definimos las columnas y sus estilos
+    tabla.add_column("Id", style="white", justify="left")
     tabla.add_column("Tarea", style="cyan", justify="left")
     tabla.add_column("Fecha Límite", style="magenta", justify="center")
     tabla.add_column("Estado", justify="center")
 
     # 4. Agregamos las filas parseando los datos
+    i = 0
     for linea in lineas:
         if not linea.strip():
             continue
         partes = linea.split("|")
+        i = i + 1
         # Aseguramos que la línea tenga el formato correcto (tarea|fecha|estado)
         if len(partes) == 3:
             nom_tarea, fecha_tarea, est = partes
@@ -89,7 +92,7 @@ def list():
             else:
                 status_formatted = "[red]❌ Pendiente[/red]"
 
-            tabla.add_row(nom_tarea, fecha_tarea, status_formatted)
+            tabla.add_row(str(i), nom_tarea, fecha_tarea, status_formatted)
 
     # 5. Imprimimos la tabla en la consola
     console.print(tabla)
